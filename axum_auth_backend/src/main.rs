@@ -3,6 +3,7 @@ mod config;
 mod dtos;
 mod error;
 mod db;
+mod utils;
 
 use axum::{
     {http::{header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE}, HeaderValue, Method}, Extension, Router, response::IntoResponse, routing::{get, post, put, delete, patch}};
@@ -46,7 +47,7 @@ async fn main() {
         };
 
         let cors = CorsLayer::new()
-            .allow_origin("*".parse::<HeaderValue>().unwrap())
+            .allow_origin("http://localhost:8000".parse::<HeaderValue>().unwrap())
             .allow_headers([AUTHORIZATION, CONTENT_TYPE, ACCEPT])
             .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE, Method::PATCH])
 
