@@ -5,6 +5,7 @@ mod error;
 mod db;
 mod utils;
 mod middleware;
+mod mail;
 
 use axum::{
     {http::{header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE}, HeaderValue, Method}, Extension, Router, response::IntoResponse, routing::{get, post, put, delete, patch}};
