@@ -4,6 +4,16 @@ mod dtos;
 mod error;
 mod db;
 
+use axum::{
+    {http::{header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE}, HeaderValue, Method}, Extension, Router, response::IntoResponse, routing::{get, post, put, delete, patch}};
+}
+use config::Config;
+use db::DBClient;
+use dotenv::dotenv;
+use sqlx::postgres::PgPoolOptions;
+use tower_http::cors::{CorsLayer, AllowOrigin};
+use tracing::level_filters::LevelFilter;
+
 #[derive(Clone, Debug)]
 pub struct AppState {
    pub env: Config,
